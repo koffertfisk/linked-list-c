@@ -9,10 +9,10 @@ A linked list implementation in C.
 ## Building
 To compile and run:
 -  `make` to build linked list
--  `make test` to run unit test suite
+-  `make test` to build and run unit test suite
 -  `make linked_list` to build linked list
 -  `make memtest` to memory test linked list
--  `make test_coverage` to produce code coverage reports for the linked list test package
+-  `make test_coverage` to produce code coverage reports for the linked list test
 -  `make clean` to remove compiled output files and directories
 
 ### Code Coverage Reports

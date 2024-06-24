@@ -1,6 +1,15 @@
 # Prerequisites
 *.d
 
+# Object directory
+obj
+
+# Test coverage output
+linked_list-lcov
+linked_list.info
+*.gcda
+*.gcno
+
 # Object files
 *.o
 *.ko
