@@ -38,11 +38,14 @@ $(PROFILE_DIR)/%.o: $(SRC_DIR)/%.c
 	@mkdir -p $(@D)
 	$(C_COMPILER) $(C_OPTIONS) $(PROFILING_FLAGS) -c $< -o $@
 
-test: $(OBJ_DIR)/linked_list_test.o $(OBJ_DIR)/linked_list.o
+linked_list_test: $(OBJ_DIR)/linked_list_test.o $(OBJ_DIR)/linked_list.o
 	$(C_COMPILER) $^ -o $@ $(CUNIT_LINK)
 
+test: linked_list_test
+	./linked_list_test
+
 memtest: test
-	$(VALGRIND) $(VALGRIND_FLAGS) ./test
+	$(VALGRIND) $(VALGRIND_FLAGS) ./linked_list_test
 
 test_coverage: clean
 	$(C_COMPILER) $(C_OPTIONS) $(LFLAGS) -o test $(TESTS_DIR)/linked_list_test.c $(SRC_DIR)/linked_list.c $(CUNIT_LINK)
@@ -56,7 +59,6 @@ clean:
 	-$(RMDIR) $(PROFILE_DIR)
 	-$(RMDIR) *-lcov
 	-$(RM) $(OBJ_DIR)/*.o $(SRC_DIR)/*.o $(TESTS_DIR)/*.o *.gcda gmon.out *.gcno *.info linked_list linked_list_test
-	-$(RM) test
 	-$(RMDIR) $(OBJ_DIR)
 
 RM = rm -f
